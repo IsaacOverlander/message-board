@@ -13,5 +13,12 @@ app.listen(PORT, () => {
 });
 
 app.post('/', (req, res) => {
-    res.send('hello')
-})
+    messageToAdd = req.body;
+    query = `INSERT INTO "messages" ("name", "message") VALUES ($1, $2);`;
+    pool.query(query, [messageToAdd.name, messageToAdd.message])
+        .then((results) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });// End query
+});// End POST
