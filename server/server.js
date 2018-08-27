@@ -12,6 +12,17 @@ app.listen(PORT, () => {
     console.log('Server up on port:', PORT);
 });
 
+app.get('/messages', (req, res) => {
+    console.log('In GET');
+    const query = `SELECT * FROM "messages";`;
+    pool.query(query).then((results) => {
+        console.log(results);
+        res.send(results.rows);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });// End GET
+});
+
 app.post('/', (req, res) => {
     messageToAdd = req.body;
     query = `INSERT INTO "messages" ("name", "message") VALUES ($1, $2);`;

@@ -2,6 +2,7 @@ const myApp = angular.module('myApp', [] );
 
 myApp.controller('AppController', function($http) {
     const vm = this;
+    vm.messagesList = [];
     
     vm.sendMessage = function(){
         vm.messageToSend = {
@@ -23,11 +24,13 @@ myApp.controller('AppController', function($http) {
     function getMessages() {
         $http({
             method: 'GET',
-            url: '/'
+            url: '/messages'
         }).then(function (response) {
-            console.log(response);
+            vm.messagesList = response.data;
+            console.log(vm.messagesList);
         }).catch(function (error) {
             console.log('Error getting messages:', error);
         });// End GET
-    }
+    };
+    getMessages();
 });
