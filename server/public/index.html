@@ -16,11 +16,13 @@
 
         <form>
             <label>Name:</label>
-            <input type="text" ng-model="ac.name"/>
+            <input type="text" ng-model="ac.name" />
             <label>Message:</label>
-            <input type="text" ng-model="ac.message"/>
+            <input type="text" ng-model="ac.message" />
             <input type="button" value="Send" ng-click="ac.sendMessage(ac.messageToSend)">
         </form>
+
+        <p ng-repeat="message in ac.messagesList"> {{message.name}}: {{message.message}}</p>
     </div>
 </body>
 
