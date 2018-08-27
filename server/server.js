@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const pool = require('./modules/pool');
 
 const PORT = process.env.PORT | 5000;
 
@@ -12,5 +13,5 @@ app.listen(PORT, () => {
 });
 
 app.post('/', (req, res) => {
-    res.send('hello');
+    res.send('hello')
 })
