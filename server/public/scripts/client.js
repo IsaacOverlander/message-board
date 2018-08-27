@@ -15,6 +15,7 @@ myApp.controller('AppController', function($http) {
             data: vm.messageToSend
         }).then(function(response){
             console.log(response);
+            getMessages();
         }).catch(function(error) {
             console.log('Error posting message:', error);
             alert('Error posting message');
