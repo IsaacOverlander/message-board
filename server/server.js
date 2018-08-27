@@ -10,3 +10,7 @@ app.use(bodyParser.json());
 app.listen(PORT, () => {
     console.log('Server up on port:', PORT);
 });
+
+app.post('/', (req, res) => {
+    res.send('hello');
+})
